@@ -38,7 +38,7 @@ function PokemonMainPage({ pokemons, isLoading, setPokemons }) {
     setIsPokeInfo(true);
     setIsMyPoke(false);
     setIsPokeHeadVisible(false);
-    setIsPokeFooter(false);
+    setIsPokeFooter(true);
   };
 
   const handleFavPokePage = () => {
@@ -109,9 +109,14 @@ function PokemonMainPage({ pokemons, isLoading, setPokemons }) {
       )}
       <FavoritePokemonsPage
         isFavVisible={isFavVisible}
+        pokemons={pokemons}
         handlePokeInfoPage={handlePokeInfoPage}
       />
-      <MyPokemonsPage isMyPoke={isMyPoke} />
+      <MyPokemonsPage
+        pokemons={pokemons}
+        isMyPoke={isMyPoke}
+        handlePokeInfoPage={handlePokeInfoPage}
+      />
       <PokemonFooter
         handlePageChange={handlePageChange}
         isPokeFooter={isPokeFooter}

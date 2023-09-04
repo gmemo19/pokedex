@@ -33,14 +33,14 @@ function PokemonInfo({
   const [showAlert, setShowAlert] = useState(false);
   const [showAlertMyPoke, setShowAlertMyPoke] = useState(false);
   const pokemonDetail = pokemon && pokemon.pokemonDetail;
-  
+
 
   function AlertModal({ open, onClose, onGoToFavorite }) {
     return (
       <Dialog
         open={open}
         onClose={onClose}
-        sx={{ "& .MuiDialog-paper": { width: "300px",height:"200px" } }}
+        sx={{ "& .MuiDialog-paper": { width: "300px", height: "200px" } }}
       >
         <DialogTitle
           sx={{
@@ -50,18 +50,18 @@ function PokemonInfo({
           }}
         >
           {isPokemonInFavorites(pokemon)
-    ? t("pokemonHasBeenAddedToYourFavourites!")
-    : t("pokemonHasBeenRemovedFromYourFavourites!") }
+            ? t("pokemonHasBeenAddedToYourFavourites!")
+            : t("pokemonHasBeenRemovedFromYourFavourites!")}
         </DialogTitle>
         <DialogActions
           sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          position: "absolute",
-          bottom: "8px",
-          left: "8px",
-          right: "8px",
-        }}
+            display: "flex",
+            justifyContent: "space-between",
+            position: "absolute",
+            bottom: "8px",
+            left: "8px",
+            right: "8px",
+          }}
         >
           <Button onClick={onClose} color="primary">
             {t("close")}
@@ -73,7 +73,7 @@ function PokemonInfo({
       </Dialog>
     );
   }
-  
+
 
   const handleCloseAlert = () => {
     setShowAlert(false);
@@ -81,38 +81,38 @@ function PokemonInfo({
 
   const handleToggleFavorite = () => {
     toggleFavorite(pokemon);
-    setShowAlert(true); 
+    setShowAlert(true);
   };
-  
-  
+
+
   function AlertMyPokeModal({ open, onClose, onGoToMyPoke }) {
     return (
       <Dialog
         open={open}
         onClose={onClose}
-        sx={{ "& .MuiDialog-paper": { width: "300px",height:"150px" } }}
+        sx={{ "& .MuiDialog-paper": { width: "300px", height: "150px" } }}
       >
         <DialogTitle
           sx={{
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            paddingTop:"30px",
+            paddingTop: "30px",
           }}
         >
           {isMyPokemons(pokemon)
-    ? t("pokemonCaught!")
-    : t("youLeftPokemon!") }
+            ? t("pokemonCaught!")
+            : t("youLeftPokemon!")}
         </DialogTitle>
         <DialogActions
-           sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          position: "absolute",
-          bottom: "8px",
-          left: "8px",
-          right: "8px",
-        }}
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            position: "absolute",
+            bottom: "8px",
+            left: "8px",
+            right: "8px",
+          }}
         >
           <Button onClick={onClose} color="primary">
             {t("close")}
@@ -134,7 +134,7 @@ function PokemonInfo({
 
   const handleToggleMyPokemons = () => {
     toggleMyPokemons(pokemon);
-    setShowAlertMyPoke(true); 
+    setShowAlertMyPoke(true);
   };
 
   useEffect(() => {
@@ -233,19 +233,19 @@ function PokemonInfo({
           }}
         >
           <Box sx={{ display: "flex", flexDirection: "row" }}>
-          {isMyPokemons(pokemon) ? (
-            <CatchingPokemonIcon  onClick={() => handleToggleMyPokemons(pokemon)}
-  style={{
-    fill: isMyPokemons(pokemon) ? "#F31D26" : "inherit",
-    cursor: "pointer",
-  }} />
+            {isMyPokemons(pokemon) ? (
+              <CatchingPokemonIcon onClick={() => handleToggleMyPokemons(pokemon)}
+                style={{
+                  fill: isMyPokemons(pokemon) ? "#F31D26" : "inherit",
+                  cursor: "pointer",
+                }} />
 
-          ) :( <CatchingPokemonIcon onClick={() => handleToggleMyPokemons(pokemon)}/> 
-          )}
+            ) : (<CatchingPokemonIcon onClick={() => handleToggleMyPokemons(pokemon)} />
+            )}
             <Box color={"white"} marginLeft={"8px"}>
-            {isMyPokemons(pokemon)
-    ? t("dropThePokemon")
-    : t("catchThePokemon")}
+              {isMyPokemons(pokemon)
+                ? t("dropThePokemon")
+                : t("catchThePokemon")}
             </Box>
           </Box>
           <AlertMyPokeModal
@@ -255,23 +255,23 @@ function PokemonInfo({
             toggleMyPokemons={handleToggleMyPokemons}
           />
           <Box sx={{ display: "flex", flexDirection: "row" }}>
-  {isPokemonInFavorites(pokemon) ? (
-    <FavoriteIcon
-  onClick={() => handleToggleFavorite(pokemon)}
-  style={{
-    fill: isPokemonInFavorites(pokemon) ? "#F31D26" : "inherit",
-    cursor: "pointer",
-  }}
-/>
-  ) : (
-    <FavoriteBorderIcon onClick={() => handleToggleFavorite(pokemon)} />
-  )}
-  <Box color={"white"} marginLeft={"8px"}>
-  {isPokemonInFavorites(pokemon)
-    ? t("removeFavorite")
-    : t("addFavorite")}
-</Box>
-</Box>
+            {isPokemonInFavorites(pokemon) ? (
+              <FavoriteIcon
+                onClick={() => handleToggleFavorite(pokemon)}
+                style={{
+                  fill: isPokemonInFavorites(pokemon) ? "#F31D26" : "inherit",
+                  cursor: "pointer",
+                }}
+              />
+            ) : (
+              <FavoriteBorderIcon onClick={() => handleToggleFavorite(pokemon)} />
+            )}
+            <Box color={"white"} marginLeft={"8px"}>
+              {isPokemonInFavorites(pokemon)
+                ? t("removeFavorite")
+                : t("addFavorite")}
+            </Box>
+          </Box>
 
           <AlertModal
             open={showAlert}
@@ -317,7 +317,7 @@ function PokemonInfo({
           <Box sx={{ display: "flex" }}>
             {pokemonDetail?.types?.map((detail, i) => (
               <Box
-              key={detail.type.name}
+                key={detail.type.name}
                 sx={{
                   height: "20px",
                   backgroundColor: getBackgroundColorByType(
@@ -410,7 +410,7 @@ function PokemonInfo({
           <Box sx={{ display: "flex" }}>
             {pokemonDetail?.abilities?.map((detail, i) => (
               <Box
-              key={i}
+                key={i}
                 sx={{
                   height: "20px",
                   backgroundColor: getBackgroundColorByType(

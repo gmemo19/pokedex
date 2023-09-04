@@ -3,10 +3,10 @@ import { useTranslation } from "react-i18next";
 import PokemonCardList from "./pokemonCardList";
 import SentimentVeryDissatisfiedIcon from "@mui/icons-material/SentimentVeryDissatisfied";
 
-function FavoritePokemonsPage({ isFavVisible, handlePokeInfoPage }) {
+function FavoritePokemonsPage({ isFavVisible, handlePokeInfoPage, pokemons }) {
   const { t } = useTranslation();
   const favoritePokemons = JSON.parse(localStorage.getItem("favorites")) || [];
-  const favoritePokemonList = favoritePokemons.map((fav) => fav.pokemon);
+  const favoritePokemonList = favoritePokemons.map((favId) => pokemons.find(pokemon => pokemon.pokemonDetail.id === favId));
 
   return (
     isFavVisible && (
@@ -32,12 +32,12 @@ function FavoritePokemonsPage({ isFavVisible, handlePokeInfoPage }) {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent:"center",
-                alignItems:"center",
-                height:"100%"
+                justifyContent: "center",
+                alignItems: "center",
+                height: "100%"
               }}
             >
-              <SentimentVeryDissatisfiedIcon style={{fill:"#ffffff"}}/>
+              <SentimentVeryDissatisfiedIcon style={{ fill: "#ffffff" }} />
               <Box fontSize={"14px"} fontWeight={"bold"} color={"#ffffff"}>
                 {t("favoritePokemonsNotFound!")}
               </Box>

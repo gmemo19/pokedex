@@ -21,12 +21,13 @@
     "pokemonHasBeenRemovedFromYourFavourites!" : "Pokemon Has Been Removed From Your Favorites",
     "removeFavorite" : "Remove Favorite",
     "favoritePokemonsNotFound!" : "Favorite Pokemons Not Found!",
+    "youHaveNotAnyPokemon" : "You have not any pokemon",
     "default" : "Default",
     "ascending" : "Ascending",
     "descending" : "Descending",
     "youLeftPokemon!" : "You Left Pokemon!",
     "dropThePokemon" : "Drop The Pokemon",
-    "catchThePokemon" : "Catch The Pokemon"
-    
+    "catchThePokemon" : "Catch The Pokemon",
+    "producer" : "Producer"
    
   }

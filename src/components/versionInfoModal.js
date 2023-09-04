@@ -26,12 +26,12 @@ function VersionInfoModal({ open, onClose }) {
           justifyContent:"center",
           alignItems:"center",
           flexDirection:"column",
-          height:"75px",
-          width:"200px"
+          height:"100px",
+          width:"300px"
         }}
       >
         <Typography variant="h6" id="device-modal-title">
-          {t("version")} : 0.0.1
+          {t("Version")} : 0.0.1
         </Typography>
         <br />
         <Typography variant="body1" id="device-modal-description">

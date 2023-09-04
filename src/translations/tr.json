@@ -21,10 +21,13 @@
     "pokemonHasBeenRemovedFromYourFavourites!" : "Pokemon Favorilerimden Kaldırıldı",
     "removeFavorite" : "Favorilerimden Kaldır",
     "favoritePokemonsNotFound!" : "Favori Pokemonunuz Bulunmamaktadır!",
+    "youHaveNotAnyPokemon" : "Pokemona sahip değilsiniz",
     "default" : "Varsayılan",
     "ascending" : "Artan",
     "descending" : "Azalan",
     "youLeftPokemon!" : "Pokemonu Bıraktınız!",
     "dropThePokemon" : "Pokemonu Bırak",
-    "catchThePokemon" : "Pokemonu Yakala"
+    "catchThePokemon" : "Pokemonu Yakala",
+    "producer" : "Yapımcı"
+
   }

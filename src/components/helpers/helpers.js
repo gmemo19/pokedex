@@ -66,28 +66,21 @@ export const getColorByStat = (value) => {
   }
 };
 
-function generateUniqueKey(pokemon) {
-  const pokemonDetail = pokemon.pokemonDetail;
-  return `${pokemonDetail.id}_${capitalizeFirstLetter(pokemon.name)}`;
-}
 
 export const isPokemonInFavorites = (pokemon) => {
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  const uniqueKey = generateUniqueKey(pokemon);
-  return favorites.some((fav) => fav.key === uniqueKey);
+  return favorites.some((favId) => favId === pokemon.pokemonDetail.id);
 };
 
 export const toggleFavorite = (pokemon) => {
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  const uniqueKey = generateUniqueKey(pokemon);
-
-  const isFavorite = favorites.some((fav) => fav.key === uniqueKey);
+  const isFavorite = favorites.some((favId) => favId === pokemon.pokemonDetail.id);
 
   if (!isFavorite) {
-    favorites.push({ key: uniqueKey, pokemon });
+    favorites.push(pokemon.pokemonDetail.id);
     localStorage.setItem("favorites", JSON.stringify(favorites));
   } else {
-    const updatedFavorites = favorites.filter((fav) => fav.key !== uniqueKey);
+    const updatedFavorites = favorites.filter((favId) => favId !== pokemon.pokemonDetail.id);
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   }
 };
@@ -116,19 +109,17 @@ export const handleSortPokemon = (sortOrder, pokemons, setPokemons) => {
 
 export const isMyPokemons = (pokemon) => {
   const myPokemons = JSON.parse(localStorage.getItem("myPokemons")) || [];
-  const uniqueKey = generateUniqueKey(pokemon);
-  return myPokemons.some((myPoke) => myPoke.key === uniqueKey);
+  return myPokemons.some((myPokeId) => myPokeId === pokemon.pokemonDetail.id);
 };
 
 export const toggleMyPokemons = (pokemon) => {
   const myPokemons = JSON.parse(localStorage.getItem("myPokemons")) || [];
-  const uniqueKey = generateUniqueKey(pokemon);
-  const isMyPokemons = myPokemons.some((myPoke) => myPoke.key === uniqueKey);
+  const isMyPokemons = myPokemons.some((myPokeId) => myPokeId === pokemon.pokemonDetail.id);
   if (!isMyPokemons) {
-    myPokemons.push({ key: uniqueKey, pokemon });
+    myPokemons.push(pokemon.pokemonDetail.id);
     localStorage.setItem("myPokemons", JSON.stringify(myPokemons));
   } else {
-    const updatedMyPokemons = myPokemons.filter((myPoke) => myPoke.key !== uniqueKey);
+    const updatedMyPokemons = myPokemons.filter((myPokeId) => myPokeId !== pokemon.pokemonDetail.id);
     localStorage.setItem("myPokemons", JSON.stringify(updatedMyPokemons));
   }
 };
