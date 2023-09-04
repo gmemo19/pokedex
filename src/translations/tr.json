@@ -1,6 +1,30 @@
 {
     "turkish": "Türkçe",
     "english" : "İngilizce",
-    "searchPoke" : "Pokemon Ara"
-   
+    "searchPoke" : "Pokemon Ara",
+    "myPokemons": "Pokemonlarım",
+    "addFavorite" : "Favorilere Ekle",
+    "baseExperience": "Temel Güç",
+    "pokemonTypes" : "Pokemon Türü",
+    "baseStats" : "Temel İstatistikler",
+    "hp":"Can",
+    "attack" : "Atak",
+    "defense": "Defans",
+    "special-attack" : "Özel Atak",
+    "special-defense" : "Özel Defans",
+    "speed" : "Hız",
+    "abilities" : "Yetenekler",
+    "favoriteList" : "Favorilerim",
+    "close" : "Kapat",
+    "pokemonHasBeenAddedToYourFavourites!": "Pokemon Favorilerime Eklendi!",
+    "pokemonCaught!" : "Pokemon Yakalandı!",
+    "pokemonHasBeenRemovedFromYourFavourites!" : "Pokemon Favorilerimden Kaldırıldı",
+    "removeFavorite" : "Favorilerimden Kaldır",
+    "favoritePokemonsNotFound!" : "Favori Pokemonunuz Bulunmamaktadır!",
+    "default" : "Varsayılan",
+    "ascending" : "Artan",
+    "descending" : "Azalan",
+    "youLeftPokemon!" : "Pokemonu Bıraktınız!",
+    "dropThePokemon" : "Pokemonu Bırak",
+    "catchThePokemon" : "Pokemonu Yakala"
   }

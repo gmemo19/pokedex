@@ -1,6 +1,32 @@
 {
     "turkish": "Turkish",
     "english" : "English",
-    "searchPoke" : "Search for Pokemon"
+    "searchPoke" : "Search for Pokemon",
+    "myPokemons": "My Pokemons",
+    "addFavorite" : "Add Favorite",
+    "baseExperience" : "Base Experience",
+    "pokemonTypes" : "Pokemon Types",
+    "baseStats" : "Base Stats",
+    "hp":"HP",
+    "attack" : "Attack",
+    "defense": "Defense",
+    "special-attack" : "Special Attack",
+    "special-defense" : "Special Defense",
+    "speed" : "Speed",
+    "abilities" : "Abilities",
+    "favoriteList" : "Favorite List",
+    "close" : "Close",
+    "pokemonHasBeenAddedToYourFavourites!": "Pokemon Has Been Added To Your Favourites!",
+    "pokemonCaught!" : "Pokemon Caught!" ,
+    "pokemonHasBeenRemovedFromYourFavourites!" : "Pokemon Has Been Removed From Your Favorites",
+    "removeFavorite" : "Remove Favorite",
+    "favoritePokemonsNotFound!" : "Favorite Pokemons Not Found!",
+    "default" : "Default",
+    "ascending" : "Ascending",
+    "descending" : "Descending",
+    "youLeftPokemon!" : "You Left Pokemon!",
+    "dropThePokemon" : "Drop The Pokemon",
+    "catchThePokemon" : "Catch The Pokemon"
+    
    
   }

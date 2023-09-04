@@ -13,9 +13,7 @@ function App() {
     getData();
   }, []);
 
-  useEffect(() => {
-    console.log(pokemons);
-  }, [pokemons]);
+ 
 
   const fetchData = async (path) => {
     const options = { headers: { "platform-id": 1, locale: "en" } };
@@ -30,7 +28,7 @@ function App() {
 
   const getData = async () => {
     setIsLoading(true);
-    const data = await fetchData("https://pokeapi.co/api/v2/pokemon?limit=10");
+    const data = await fetchData("https://pokeapi.co/api/v2/pokemon?limit=40");
     await Promise.all(
       data.results.map(async (result) => {
         const pokeData = await fetchData(
@@ -45,8 +43,8 @@ function App() {
 
   return (
     <I18nextProvider i18n={i18n}>
-      <Box>
-        <PokemonMainPage pokemons={pokemons} isLoading={isLoading} />
+      <Box height={"100%"}>
+        <PokemonMainPage pokemons={pokemons} setPokemons={setPokemons} isLoading={isLoading} />
       </Box>
     </I18nextProvider>
   );

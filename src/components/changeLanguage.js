@@ -33,19 +33,21 @@ function ChangeLanguage() {
   };
 
   return (
-    <Box>
+    <Box sx={{width:"100%"}}>
       <Button
         aria-describedby={id}
         variant="contained"
         onClick={handleClick}
         sx={{
-          height: "30px",
+          height: "25px",
+          width:"50px" ,
           backgroundColor: "white",
           marginRight: "15px",
         }}
+        
       >
         <img
-          style={{ height: "20px" }}
+          style={{ height: "15px" }}
           src="/static/img/languageic.svg"
           alt="language-icon"
         />
@@ -66,14 +68,19 @@ function ChangeLanguage() {
               key={index}
               sx={{
                 cursor: "pointer",
-                display: "flex",
-                alignItems: "center",
-                padding: "5px",
+                boxSizing: "border-box",
+                  "&:hover": { background: "grey" },
               }}
+              display={"flex"}
+                justifyContent={"space-between"}
+                width="100%"
+                alignItems={"center"}
+                padding="0 20px"
+                mt={index === 0 ? 0 : 2}
               onClick={() => handleLanguageClick(language)}
             >
               <img
-                style={{ height: "20px", marginRight: "5px" }}
+                style={{ height: "20px", marginRight: "5px",width:"25px" }}
                 src={"/static/img/" + language.flag}
                 alt={language.label}
               />

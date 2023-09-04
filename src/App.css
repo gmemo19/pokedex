@@ -40,3 +40,16 @@
 .MuiTabs-root {
   width: 100vw;
 }
+
+.PokemonFooter {
+  position: fixed;
+  bottom: 0;
+  background-color: #5A5A5A;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  min-height: 50px;
+  max-height: 50px;
+  width: 100%;
+  z-index: 999;
+}
