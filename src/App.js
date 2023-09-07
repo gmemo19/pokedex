@@ -8,12 +8,11 @@ import i18n from "./components/i18n";
 function App() {
   const [isLoading, setIsLoading] = useState();
   const [pokemons, setPokemons] = useState([]);
+  const [defaultPokemons, setDefaultPokemons] = useState([]);
 
   useEffect(() => {
     getData();
   }, []);
-
- 
 
   const fetchData = async (path) => {
     const options = { headers: { "platform-id": 1, locale: "en" } };
@@ -37,6 +36,7 @@ function App() {
         result.pokemonDetail = pokeData;
       })
     );
+    setDefaultPokemons(data.results);
     setPokemons(data.results);
     setIsLoading(false);
   };
@@ -44,7 +44,13 @@ function App() {
   return (
     <I18nextProvider i18n={i18n}>
       <Box height={"100%"}>
-        <PokemonMainPage pokemons={pokemons} setPokemons={setPokemons} isLoading={isLoading} />
+        <PokemonMainPage
+          defaultPokemons={defaultPokemons}
+          setDefaultPokemons={setDefaultPokemons}
+          pokemons={pokemons}
+          setPokemons={setPokemons}
+          isLoading={isLoading}
+        />
       </Box>
     </I18nextProvider>
   );

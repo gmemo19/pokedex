@@ -22,6 +22,14 @@ export const getBackgroundColorByType = (type) => {
       return "#9B0A26";
     case "fairy":
       return "#EA4DD3";
+    case "ghost":
+      return "#165291";
+    case "rock":
+      return "#A3B3C1";
+      case "fighting":
+      return "#F0B338";
+      case "psychic":
+      return "#A14BF6";
 
     default:
       return "#5A5A5A";
@@ -48,11 +56,21 @@ export const getPokemonBackgroundColorByType = (type) => {
       return "#BD3E56";
     case "fairy":
       return "#E577D5";
+    case "ghost":
+      return "#366DA7";
+    case "rock":
+      return "#C2CCD5";
+      case "fighting":
+      return "#E7BD6B";
+      case "psychic":
+      return "#B487E1";
 
     default:
-      return "#5A5A5A";
+      return "#737477";
   }
 };
+
+
 
 export const getColorByStat = (value) => {
   if (value < 50) {
@@ -66,7 +84,6 @@ export const getColorByStat = (value) => {
   }
 };
 
-
 export const isPokemonInFavorites = (pokemon) => {
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
   return favorites.some((favId) => favId === pokemon.pokemonDetail.id);
@@ -74,21 +91,46 @@ export const isPokemonInFavorites = (pokemon) => {
 
 export const toggleFavorite = (pokemon) => {
   const favorites = JSON.parse(localStorage.getItem("favorites")) || [];
-  const isFavorite = favorites.some((favId) => favId === pokemon.pokemonDetail.id);
+  const isFavorite = favorites.some(
+    (favId) => favId === pokemon.pokemonDetail.id
+  );
 
   if (!isFavorite) {
     favorites.push(pokemon.pokemonDetail.id);
     localStorage.setItem("favorites", JSON.stringify(favorites));
   } else {
-    const updatedFavorites = favorites.filter((favId) => favId !== pokemon.pokemonDetail.id);
+    const updatedFavorites = favorites.filter(
+      (favId) => favId !== pokemon.pokemonDetail.id
+    );
     localStorage.setItem("favorites", JSON.stringify(updatedFavorites));
   }
 };
 
+export const isMyPokemons = (pokemon) => {
+  const myPokemons = JSON.parse(localStorage.getItem("myPokemons")) || [];
+  return myPokemons.some((myPokeId) => myPokeId === pokemon.pokemonDetail.id);
+};
+
+export const toggleMyPokemons = (pokemon) => {
+  const myPokemons = JSON.parse(localStorage.getItem("myPokemons")) || [];
+  const isMyPokemons = myPokemons.some(
+    (myPokeId) => myPokeId === pokemon.pokemonDetail.id
+  );
+  if (!isMyPokemons) {
+    myPokemons.push(pokemon.pokemonDetail.id);
+    localStorage.setItem("myPokemons", JSON.stringify(myPokemons));
+  } else {
+    const updatedMyPokemons = myPokemons.filter(
+      (myPokeId) => myPokeId !== pokemon.pokemonDetail.id
+    );
+    localStorage.setItem("myPokemons", JSON.stringify(updatedMyPokemons));
+  }
+};
 export const handleSortPokemon = (sortOrder, pokemons, setPokemons) => {
   if (!pokemons || pokemons.length === 0) {
     return pokemons;
   }
+
   const pokeList = [...pokemons];
   pokeList.sort((a, b) => {
     const baseExpA = a.pokemonDetail.base_experience;
@@ -107,19 +149,14 @@ export const handleSortPokemon = (sortOrder, pokemons, setPokemons) => {
   setPokemons(pokeList);
 };
 
-export const isMyPokemons = (pokemon) => {
-  const myPokemons = JSON.parse(localStorage.getItem("myPokemons")) || [];
-  return myPokemons.some((myPokeId) => myPokeId === pokemon.pokemonDetail.id);
-};
-
-export const toggleMyPokemons = (pokemon) => {
-  const myPokemons = JSON.parse(localStorage.getItem("myPokemons")) || [];
-  const isMyPokemons = myPokemons.some((myPokeId) => myPokeId === pokemon.pokemonDetail.id);
-  if (!isMyPokemons) {
-    myPokemons.push(pokemon.pokemonDetail.id);
-    localStorage.setItem("myPokemons", JSON.stringify(myPokemons));
-  } else {
-    const updatedMyPokemons = myPokemons.filter((myPokeId) => myPokeId !== pokemon.pokemonDetail.id);
-    localStorage.setItem("myPokemons", JSON.stringify(updatedMyPokemons));
+export const filterPokemonType = (setPokemons, type, defaultPokemons) => {
+  if (!defaultPokemons || defaultPokemons.length === 0 || type === "all") {
+    setPokemons(defaultPokemons);
+    return;
   }
+  const pokeList = [...defaultPokemons];
+  const filteredPokeList = pokeList.filter((pokemon) =>
+    pokemon.pokemonDetail.types.some((typeObj) => typeObj.type.name === type)
+  );
+  setPokemons(filteredPokeList);
 };

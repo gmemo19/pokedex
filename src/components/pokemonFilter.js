@@ -1,14 +1,19 @@
-import { Box, Button, Popover } from "@mui/material";
+import { Box, Button, MenuItem, Popover, Select } from "@mui/material";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import ImportExportIcon from "@mui/icons-material/ImportExport";
-import { handleSortPokemon } from "./helpers/helpers";
+import {
+  capitalizeFirstLetter,
+  filterPokemonType,
+  handleSortPokemon,
+} from "./helpers/helpers";
 
-function PokemonFilter({ isVisible, pokemons, setPokemons }) {
+function PokemonFilter({ isVisible, pokemons, setPokemons, defaultPokemons }) {
   const [anchorEl, setAnchorEl] = useState(null);
   const { t } = useTranslation();
   const [sortOrder, setSortOrder] = useState("normal");
+  const [type, setType] = useState("all");
 
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -27,6 +32,29 @@ function PokemonFilter({ isVisible, pokemons, setPokemons }) {
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
 
+  const handleChange = (event) => {
+    setType(event.target.value);
+    filterPokemonType(setPokemons, event.target.value, defaultPokemons);
+  };
+
+  const typeValues = [
+    "all",
+    "grass",
+    "fire",
+    "water",
+    "bug",
+    "electric",
+    "poison",
+    "flying",
+    "ground",
+    "fairy",
+    "ghost",
+    "rock",
+    "fighting",
+    "psychic",
+    "normal",
+  ];
+
   return (
     isVisible && (
       <Box
@@ -35,12 +63,33 @@ function PokemonFilter({ isVisible, pokemons, setPokemons }) {
           minHeight: "40px",
           maxHeight: "40px",
           display: "flex",
-          justifyContent: "flex-end",
+          justifyContent: "space-between",
           alignItems: "center",
           width: "100%",
           boxSizing: "border-box",
         }}
       >
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={type}
+          onChange={handleChange}
+          sx={{
+            height: "30px",
+            marginLeft: "15px",
+            backgroundColor: "#ffffff",
+            width: "190px",
+          }}
+          MenuProps={{
+            style: { height: "350px" },
+          }}
+        >
+          {typeValues.map((valueType) => (
+            <MenuItem value={valueType}>
+              {capitalizeFirstLetter(valueType) + " " + "Pokemons"}
+            </MenuItem>
+          ))}
+        </Select>
         <Button
           aria-describedby={id}
           variant="contained"
@@ -120,7 +169,9 @@ function PokemonFilter({ isVisible, pokemons, setPokemons }) {
               handleSort("descending");
             }}
           >
-            <Box>{t("baseExperience")} {t("descending")}</Box>
+            <Box>
+              {t("baseExperience")} {t("descending")}
+            </Box>
             <ImportExportIcon
               style={{ height: "20px", marginRight: "5px", width: "25px" }}
             />

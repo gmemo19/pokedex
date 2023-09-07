@@ -1,5 +1,4 @@
-import { Box, Grid } from "@mui/material";
-import PokemonCard from "./pokemonCard";
+import { Box } from "@mui/material";
 import PokemonHead from "./pokemonHead";
 import PokemonFilter from "./pokemonFilter";
 import PokemonFooter from "./pokemonFooter";
@@ -10,7 +9,12 @@ import PokemonInfo from "./pokemonInfo";
 import FavoritePokemonsPage from "./favoritePokemonsPage";
 import MyPokemonsPage from "./myPokePage";
 
-function PokemonMainPage({ pokemons, isLoading, setPokemons }) {
+function PokemonMainPage({
+  pokemons,
+  isLoading,
+  setPokemons,
+  defaultPokemons,
+}) {
   const [isVisible, setIsVisible] = useState(true);
   const [isFavVisible, setIsFavVisible] = useState(false);
   const [isPokeInfo, setIsPokeInfo] = useState(false);
@@ -73,7 +77,12 @@ function PokemonMainPage({ pokemons, isLoading, setPokemons }) {
         isPokeHeadVisible={isPokeHeadVisible}
         handlePageChange={handlePageChange}
       />
-      <PokemonFilter setPokemons={setPokemons} isVisible={isVisible} pokemons={pokemons} />
+      <PokemonFilter
+        setPokemons={setPokemons}
+        isVisible={isVisible}
+        pokemons={pokemons}
+        defaultPokemons={defaultPokemons}
+      />
       <PokemonSearch
         isVisible={isVisible}
         pokemons={pokemons}
